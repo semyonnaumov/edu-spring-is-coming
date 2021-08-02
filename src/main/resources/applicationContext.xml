@@ -7,8 +7,12 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="someBean"
-          class="com.naumov.TestBean">
-        <constructor-arg value="Some text in the bean"/>
+    <bean id="rockMusic"
+          class="com.naumov.RockMusic">
+    </bean>
+
+    <bean id="musicPlayer"
+          class="com.naumov.MusicPlayer">
+        <constructor-arg ref="rockMusic"/>
     </bean>
 </beans>
