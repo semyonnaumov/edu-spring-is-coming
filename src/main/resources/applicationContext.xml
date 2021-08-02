@@ -18,7 +18,9 @@
     </bean>
 
     <bean id="musicPlayer"
-          class="com.naumov.MusicPlayer">
+          class="com.naumov.MusicPlayer"
+          scope="prototype"
+    >
         <constructor-arg ref="rockMusic"/>
         <property name="playingMusic" ref="classicalMusic"/> <!-- constructor goes first, here we overwrite music field -->
         <property name="availableMusic">
