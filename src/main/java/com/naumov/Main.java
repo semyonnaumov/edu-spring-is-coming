@@ -6,15 +6,14 @@ public class Main {
     public static void main(String[] args) {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
 
-        MusicPlayer player0 = context.getBean("musicPlayer", MusicPlayer.class);
-        MusicPlayer player1 = context.getBean("musicPlayer", MusicPlayer.class);
+        Music classicalMusic = context.getBean("classicalMusic", Music.class);
+        System.out.println(classicalMusic.getSong());
 
-        System.out.println(player0 == player1); // false since prototype
+        Music rockMusic = context.getBean("rockMusic", Music.class);
+        System.out.println(rockMusic.getSong());
 
-        Music classicalMusic0 = context.getBean("classicalMusic", Music.class);
-        Music classicalMusic1 = context.getBean("classicalMusic", Music.class);
-
-        System.out.println(classicalMusic0 == classicalMusic1); // true since singleton
+        Music rapMusic = context.getBean("rapMusic", Music.class);
+        System.out.println(rapMusic.getSong());
 
         context.close();
     }

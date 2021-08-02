@@ -5,4 +5,12 @@ public class RockMusic implements Music {
     public String getSong() {
         return "Bohemian Rhapsody";
     }
+
+    private void doInit() {
+        System.out.println(this + " initialization");
+    }
+
+    private void doDestroy() {
+        System.out.println(this + " destruction");
+    }
 }

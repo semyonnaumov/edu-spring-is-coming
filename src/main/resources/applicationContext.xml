@@ -9,29 +9,22 @@
 
     <context:property-placeholder location="musicPlayer.properties"/>
 
-    <bean id="rockMusic"
-          class="com.naumov.RockMusic">
-    </bean>
-
     <bean id="classicalMusic"
-          class="com.naumov.ClassicalMusic">
-    </bean>
+          class="com.naumov.ClassicalMusic"
+          init-method="doInit"
+          destroy-method="doDestroy"/>
 
-    <bean id="musicPlayer"
-          class="com.naumov.MusicPlayer"
+    <bean id="rockMusic"
+          class="com.naumov.RockMusic"
+          init-method="doInit"
+          destroy-method="doDestroy"
+          scope="prototype"/>
+
+    <bean id="rapMusic"
+          class="com.naumov.RapMusic"
           scope="prototype"
-    >
-        <constructor-arg ref="rockMusic"/>
-        <property name="playingMusic" ref="classicalMusic"/> <!-- constructor goes first, here we overwrite music field -->
-        <property name="availableMusic">
-            <list>
-                <ref bean="rockMusic"/>
-                <ref bean="classicalMusic"/>
-            </list>
-        </property>
-        <property name="name" value="Sony"/>
-        <property name="volume" value="50"/>
-        <property name="color" value="${player.color}"/>
-        <property name="speakers" value="${player.speakers}"/>
-    </bean>
+          init-method="doInit"
+          destroy-method="doDestroy"
+          factory-method="init"/>
+
 </beans>
