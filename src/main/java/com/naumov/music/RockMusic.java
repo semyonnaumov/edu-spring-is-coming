@@ -1,16 +1,9 @@
-package com.naumov;
+package com.naumov.music;
 
-public class RapMusic implements Music {
+public class RockMusic implements Music {
     @Override
     public String getSong() {
-        return "Rap God";
-    }
-
-    private RapMusic() {
-    }
-
-    public static RapMusic init() {
-        return new RapMusic();
+        return "Bohemian Rhapsody";
     }
 
     private void doInit() {

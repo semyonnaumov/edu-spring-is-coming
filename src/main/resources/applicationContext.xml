@@ -10,21 +10,20 @@
     <context:property-placeholder location="musicPlayer.properties"/>
 
     <bean id="classicalMusic"
-          class="com.naumov.ClassicalMusic"
+          class="com.naumov.music.ClassicalMusic"
           init-method="doInit"
           destroy-method="doDestroy"/>
 
     <bean id="rockMusic"
-          class="com.naumov.RockMusic"
+          class="com.naumov.music.RockMusic"
           init-method="doInit"
           destroy-method="doDestroy"
           scope="prototype"/>
 
     <bean id="rapMusic"
-          class="com.naumov.RapMusic"
+          class="com.naumov.music.RapMusic"
           scope="prototype"
           init-method="doInit"
           destroy-method="doDestroy"
           factory-method="init"/>
-
 </beans>

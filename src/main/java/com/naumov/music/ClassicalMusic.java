@@ -1,9 +1,9 @@
-package com.naumov;
+package com.naumov.music;
 
-public class RockMusic implements Music {
+public class ClassicalMusic implements Music {
     @Override
     public String getSong() {
-        return "Bohemian Rhapsody";
+        return "Hungarian Rhapsody";
     }
 
     private void doInit() {

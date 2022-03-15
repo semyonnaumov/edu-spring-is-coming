@@ -1,4 +1,4 @@
-package com.naumov;
+package com.naumov.music;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

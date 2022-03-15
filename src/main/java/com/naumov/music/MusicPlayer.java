@@ -1,4 +1,4 @@
-package com.naumov;
+package com.naumov.music;
 
 import java.util.List;
 
