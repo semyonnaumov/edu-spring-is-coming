@@ -19,8 +19,8 @@ public class Point {
         this.y = y;
     }
 
-    public void init() {
-        System.out.println("Init from " + this);
+    public void globalInit() {
+        System.out.println("Global init from " + super.toString());
     }
 
     @Override

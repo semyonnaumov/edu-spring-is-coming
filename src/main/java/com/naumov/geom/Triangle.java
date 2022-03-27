@@ -1,12 +1,16 @@
 package com.naumov.geom;
 
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
-public class Triangle implements ApplicationContextAware {
+public class Triangle implements ApplicationContextAware, BeanNameAware, InitializingBean, DisposableBean {
     private Point pointA, pointB, pointC;
-    private ApplicationContext applicationContext;
+    private ApplicationContext context;
+    private String beanName;
 
     public Point getPointA() {
         return pointA;
@@ -37,12 +41,31 @@ public class Triangle implements ApplicationContextAware {
         return "[" + pointA + " " + pointB + " " + pointC + "]";
     }
 
-    public void init() {
-        System.out.println("Init from " + this);
+    @Override
+    public void setApplicationContext(ApplicationContext context) throws BeansException {
+        this.context = context;
     }
 
     @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext = applicationContext;
+    public void setBeanName(String beanName) {
+        this.beanName = beanName;
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("afterPropertiesSet");
+    }
+
+    @Override
+    public void destroy() throws Exception {
+        System.out.println("destroy");
+    }
+
+    public void myInit() {
+        System.out.println("myInit");
+    }
+
+    public void myDestroy() {
+        System.out.println("mylDestroy");
     }
 }

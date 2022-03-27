@@ -2,35 +2,33 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd">
+        http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-init-method="globalInit"
+       default-destroy-method="globalDestroy">
 
-    <bean id="parentTriangle" class="com.naumov.geom.Triangle" init-method="init">
+    <bean id="triangle"
+          class="com.naumov.geom.Triangle"
+          init-method="myInit"
+          destroy-method="myDestroy">
         <property name="pointA" ref="pointA"/>
-    </bean>
-
-    <bean id="triangle1" class="com.naumov.geom.Triangle" parent="parentTriangle">
         <property name="pointB" ref="pointB"/>
         <property name="pointC" ref="pointC"/>
     </bean>
 
-    <bean id="triangle2" class="com.naumov.geom.Triangle" parent="parentTriangle">
-        <property name="pointA" ref="pointB"/> <!-- Overrides parent configuration -->
-        <property name="pointB" ref="pointB"/>
-        <property name="pointC" ref="pointC"/>
-    </bean>
-
-    <bean id="pointA" class="com.naumov.geom.Point" init-method="init" scope="prototype">
+    <bean id="pointA" class="com.naumov.geom.Point" scope="prototype">
         <property name="x" value="0"/>
         <property name="y" value="0"/>
     </bean>
 
-    <bean id="pointB" class="com.naumov.geom.Point" init-method="init" scope="prototype">
+    <bean id="pointB" class="com.naumov.geom.Point" scope="prototype">
         <property name="x" value="3"/>
         <property name="y" value="5"/>
     </bean>
 
-    <bean id="pointC" class="com.naumov.geom.Point" init-method="init" scope="prototype">
+    <bean id="pointC" class="com.naumov.geom.Point" scope="prototype">
         <property name="x" value="-5"/>
         <property name="y" value="10"/>
     </bean>
+
+    <bean class="com.naumov.geom.SimpleBeanPostProcessor" />
 </beans>
