@@ -7,7 +7,7 @@
        default-destroy-method="globalDestroy">
 
     <bean id="triangle"
-          class="com.naumov.geom.Triangle"
+          class="com.naumov.geometry.Triangle"
           init-method="myInit"
           destroy-method="myDestroy">
         <property name="pointA" ref="pointA"/>
@@ -15,20 +15,24 @@
         <property name="pointC" ref="pointC"/>
     </bean>
 
-    <bean id="pointA" class="com.naumov.geom.Point" scope="prototype">
-        <property name="x" value="0"/>
-        <property name="y" value="0"/>
+    <bean id="pointA" class="com.naumov.geometry.Point" scope="prototype">
+        <property name="x" value="${pointA.x}"/>
+        <property name="y" value="${pointA.y}"/>
     </bean>
 
-    <bean id="pointB" class="com.naumov.geom.Point" scope="prototype">
+    <bean id="pointB" class="com.naumov.geometry.Point" scope="prototype">
         <property name="x" value="3"/>
         <property name="y" value="5"/>
     </bean>
 
-    <bean id="pointC" class="com.naumov.geom.Point" scope="prototype">
+    <bean id="pointC" class="com.naumov.geometry.Point" scope="prototype">
         <property name="x" value="-5"/>
         <property name="y" value="10"/>
     </bean>
 
-    <bean class="com.naumov.geom.SimpleBeanPostProcessor" />
+    <bean class="com.naumov.geometry.SimpleBeanPostProcessor"/>
+    <bean class="com.naumov.geometry.SimpleBeanFactoryPostProcessor"/>
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations" value="geometry.properties"/>
+    </bean>
 </beans>

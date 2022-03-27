@@ -1,4 +1,4 @@
-package com.naumov.geom;
+package com.naumov.geometry;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanNameAware;

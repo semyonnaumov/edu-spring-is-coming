@@ -1,4 +1,4 @@
-package com.naumov.geom;
+package com.naumov.geometry;
 
 public class Point {
     private int x, y;
