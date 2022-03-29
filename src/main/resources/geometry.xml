@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans.xsd"
+        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd"
        default-init-method="globalInit"
        default-destroy-method="globalDestroy">
 
-    <bean id="triangle"
-          class="com.naumov.geometry.Triangle"
-          init-method="myInit"
-          destroy-method="myDestroy">
-        <property name="pointA" ref="pointA"/>
+    <context:annotation-config/>
+    <context:property-placeholder location="geometry.properties"/>
+
+    <bean id="triangle" class="com.naumov.geometry.Triangle">
+        <!-- pointA is injected via @Resource annotation -->
         <property name="pointB" ref="pointB"/>
         <property name="pointC" ref="pointC"/>
     </bean>
 
-    <bean id="pointA" class="com.naumov.geometry.Point" scope="prototype">
+    <bean id="pointAA" class="com.naumov.geometry.Point" scope="prototype">
+        <qualifier value="pointAA"/>
         <property name="x" value="${pointA.x}"/>
         <property name="y" value="${pointA.y}"/>
     </bean>
@@ -32,7 +34,5 @@
 
     <bean class="com.naumov.geometry.SimpleBeanPostProcessor"/>
     <bean class="com.naumov.geometry.SimpleBeanFactoryPostProcessor"/>
-    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="locations" value="geometry.properties"/>
-    </bean>
+
 </beans>

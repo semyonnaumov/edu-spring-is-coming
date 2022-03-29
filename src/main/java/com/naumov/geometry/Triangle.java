@@ -4,8 +4,13 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import javax.annotation.Resource;
 
 public class Triangle implements ApplicationContextAware, BeanNameAware, InitializingBean, DisposableBean {
     private Point pointA, pointB, pointC;
@@ -16,6 +21,8 @@ public class Triangle implements ApplicationContextAware, BeanNameAware, Initial
         return pointA;
     }
 
+    @Resource
+    @Qualifier("pointAA")
     public void setPointA(Point pointA) {
         this.pointA = pointA;
     }
@@ -61,11 +68,13 @@ public class Triangle implements ApplicationContextAware, BeanNameAware, Initial
         System.out.println("destroy");
     }
 
+    @PostConstruct
     public void myInit() {
         System.out.println("myInit");
     }
 
+    @PreDestroy
     public void myDestroy() {
-        System.out.println("mylDestroy");
+        System.out.println("myDestroy");
     }
 }

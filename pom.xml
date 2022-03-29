@@ -27,19 +27,30 @@
       <scope>test</scope>
     </dependency>
 
+    <!-- Context, context-related annotations: @Configuration, @Bean, etc. -->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
       <version>${spring.version}</version>
     </dependency>
+
+    <!-- Annotations @Autowired, @Qualifier, @Required etc. -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-beans</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <!-- JSR-250 annotations: @PostConstruct, @PreDestroy, @Resource, etc. -->
+    <dependency>
+      <groupId>javax.annotation</groupId>
+      <artifactId>javax.annotation-api</artifactId>
+      <version>1.3.2</version>
+    </dependency>
+
 <!--    <dependency>-->
 <!--      <groupId>org.springframework</groupId>-->
 <!--      <artifactId>spring-core</artifactId>-->
-<!--      <version>${spring.version}</version>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--      <groupId>org.springframework</groupId>-->
-<!--      <artifactId>spring-beans</artifactId>-->
 <!--      <version>${spring.version}</version>-->
 <!--    </dependency>-->
   </dependencies>
