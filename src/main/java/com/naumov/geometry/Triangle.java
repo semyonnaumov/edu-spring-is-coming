@@ -4,25 +4,27 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.context.MessageSource;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.annotation.Resource;
 
+@Component
 public class Triangle implements ApplicationContextAware, BeanNameAware, InitializingBean, DisposableBean {
     private Point pointA, pointB, pointC;
     private ApplicationContext context;
     private String beanName;
+    private MessageSource messageSource;
 
     public Point getPointA() {
         return pointA;
     }
 
-    @Resource
-    @Qualifier("pointAA")
+    @Autowired
     public void setPointA(Point pointA) {
         this.pointA = pointA;
     }
@@ -31,6 +33,7 @@ public class Triangle implements ApplicationContextAware, BeanNameAware, Initial
         return pointB;
     }
 
+    @Autowired
     public void setPointB(Point pointB) {
         this.pointB = pointB;
     }
@@ -39,8 +42,18 @@ public class Triangle implements ApplicationContextAware, BeanNameAware, Initial
         return pointC;
     }
 
+    @Autowired
     public void setPointC(Point pointC) {
         this.pointC = pointC;
+    }
+
+    public MessageSource getMessageSource() {
+        return messageSource;
+    }
+
+    @Autowired
+    public void setMessageSource(MessageSource messageSource) {
+        this.messageSource = messageSource;
     }
 
     @Override
@@ -61,6 +74,8 @@ public class Triangle implements ApplicationContextAware, BeanNameAware, Initial
     @Override
     public void afterPropertiesSet() throws Exception {
         System.out.println("afterPropertiesSet");
+        String message = messageSource.getMessage("greeting", null, "Default", null);
+        System.out.println("afterPropertiesSet, greeting=" + message);
     }
 
     @Override

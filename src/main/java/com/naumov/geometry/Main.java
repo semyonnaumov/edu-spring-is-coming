@@ -8,6 +8,9 @@ public class Main {
         AbstractApplicationContext context = new ClassPathXmlApplicationContext("geometry.xml");
         context.registerShutdownHook();
         Triangle triangle = context.getBean("triangle", Triangle.class);
-        System.out.println("Container is up, the bean \"triangle\" is " + triangle);
+        System.out.println("--- Container is up, the bean \"triangle\" is " + triangle);
+
+        String message = context.getMessage("greeting", null, "def", null);
+        System.out.println("--- Message from the MessageSource: \"" + message + "\"");
     }
 }
