@@ -5,32 +5,28 @@ import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
-import org.springframework.context.MessageSource;
+import org.springframework.context.*;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 @Component
-public class Triangle implements ApplicationContextAware, BeanNameAware, InitializingBean, DisposableBean {
+public class Triangle implements
+        ApplicationContextAware,
+        BeanNameAware,
+        ApplicationEventPublisherAware,
+        InitializingBean,
+        DisposableBean {
     private Point pointA, pointB, pointC;
     private ApplicationContext context;
     private String beanName;
     private MessageSource messageSource;
-
-    public Point getPointA() {
-        return pointA;
-    }
+    private ApplicationEventPublisher publisher;
 
     @Autowired
     public void setPointA(Point pointA) {
         this.pointA = pointA;
-    }
-
-    public Point getPointB() {
-        return pointB;
     }
 
     @Autowired
@@ -38,17 +34,9 @@ public class Triangle implements ApplicationContextAware, BeanNameAware, Initial
         this.pointB = pointB;
     }
 
-    public Point getPointC() {
-        return pointC;
-    }
-
     @Autowired
     public void setPointC(Point pointC) {
         this.pointC = pointC;
-    }
-
-    public MessageSource getMessageSource() {
-        return messageSource;
     }
 
     @Autowired
@@ -72,10 +60,16 @@ public class Triangle implements ApplicationContextAware, BeanNameAware, Initial
     }
 
     @Override
+    public void setApplicationEventPublisher(ApplicationEventPublisher publisher) {
+        this.publisher = publisher;
+    }
+
+    @Override
     public void afterPropertiesSet() throws Exception {
         System.out.println("afterPropertiesSet");
         String message = messageSource.getMessage("greeting", null, "Default", null);
         System.out.println("afterPropertiesSet, greeting=" + message);
+        publisher.publishEvent(new MyApplicationEvent("afterPropertiesSet, event"));
     }
 
     @Override
