@@ -17,9 +17,10 @@ public class TerminatorQuoter implements Quoter {
         System.out.println("Phase 2");
     }
 
+    @PostProxy
     @Override
-    @PostConstruct
     public void sayQuote() {
+        System.out.println("Phase 3");
         for (int i = 0; i < repeat; i++) {
             System.out.println(quote);
         }
