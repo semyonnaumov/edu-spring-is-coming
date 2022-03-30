@@ -1,4 +1,4 @@
-package com.naumov.music;
+package com.naumov.alishev;
 
 public interface Music {
     String getSong();

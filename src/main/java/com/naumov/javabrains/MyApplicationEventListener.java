@@ -1,4 +1,4 @@
-package com.naumov.geometry;
+package com.naumov.javabrains;
 
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;

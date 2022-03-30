@@ -7,21 +7,21 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:property-placeholder location="music.properties"/>
+    <context:property-placeholder location="alishev/music.properties"/>
 
     <bean id="classicalMusic"
-          class="com.naumov.music.ClassicalMusic"
+          class="com.naumov.alishev.ClassicalMusic"
           init-method="doInit"
           destroy-method="doDestroy"/>
 
     <bean id="rockMusic"
-          class="com.naumov.music.RockMusic"
+          class="com.naumov.alishev.RockMusic"
           init-method="doInit"
           destroy-method="doDestroy"
           scope="prototype"/>
 
     <bean id="rapMusic"
-          class="com.naumov.music.RapMusic"
+          class="com.naumov.alishev.RapMusic"
           scope="prototype"
           init-method="doInit"
           destroy-method="doDestroy"

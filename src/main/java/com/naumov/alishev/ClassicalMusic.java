@@ -1,9 +1,9 @@
-package com.naumov.music;
+package com.naumov.alishev;
 
-public class RockMusic implements Music {
+public class ClassicalMusic implements Music {
     @Override
     public String getSong() {
-        return "Bohemian Rhapsody";
+        return "Hungarian Rhapsody";
     }
 
     private void doInit() {

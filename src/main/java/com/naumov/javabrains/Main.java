@@ -1,11 +1,11 @@
-package com.naumov.geometry;
+package com.naumov.javabrains;
 
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {
     public static void main(String[] args) {
-        AbstractApplicationContext context = new ClassPathXmlApplicationContext("geometry.xml");
+        AbstractApplicationContext context = new ClassPathXmlApplicationContext("javabrains/geometry.xml");
         context.registerShutdownHook();
         Triangle triangle = context.getBean("triangle", Triangle.class);
         System.out.println("--- Container is up, the bean \"triangle\" is " + triangle);

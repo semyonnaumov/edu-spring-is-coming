@@ -1,4 +1,4 @@
-package com.naumov.music;
+package com.naumov.alishev;
 
 public class RapMusic implements Music {
     @Override

@@ -8,20 +8,20 @@
        default-destroy-method="globalDestroy">
 
     <context:annotation-config/>
-    <context:component-scan base-package="com.naumov.geometry"/>
-    <context:property-placeholder location="geometry.properties"/>
+    <context:component-scan base-package="com.naumov.javabrains"/>
+    <context:property-placeholder location="javabrains/geometry.properties"/>
 
-    <bean id="pointA" class="com.naumov.geometry.Point" scope="prototype">
+    <bean id="pointA" class="com.naumov.javabrains.Point" scope="prototype">
         <property name="x" value="${pointA.x}"/>
         <property name="y" value="${pointA.y}"/>
     </bean>
 
-    <bean id="pointB" class="com.naumov.geometry.Point" scope="prototype">
+    <bean id="pointB" class="com.naumov.javabrains.Point" scope="prototype">
         <property name="x" value="3"/>
         <property name="y" value="5"/>
     </bean>
 
-    <bean id="pointC" class="com.naumov.geometry.Point" scope="prototype">
+    <bean id="pointC" class="com.naumov.javabrains.Point" scope="prototype">
         <property name="x" value="-5"/>
         <property name="y" value="10"/>
     </bean>
@@ -29,12 +29,12 @@
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
         <property name="basenames">
             <list>
-                <value>messages</value>
+                <value>javabrains.messages</value>
             </list>
         </property>
     </bean>
 
-    <bean class="com.naumov.geometry.SimpleBeanPostProcessor"/>
-    <bean class="com.naumov.geometry.SimpleBeanFactoryPostProcessor"/>
+    <bean class="com.naumov.javabrains.SimpleBeanPostProcessor"/>
+    <bean class="com.naumov.javabrains.SimpleBeanFactoryPostProcessor"/>
 
 </beans>
