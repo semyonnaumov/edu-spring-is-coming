@@ -7,7 +7,7 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:property-placeholder location="alishev/music.properties"/>
+    <context:property-placeholder location="alishev/alishev.properties"/>
 
     <bean id="classicalMusic"
           class="com.naumov.alishev.ClassicalMusic"
